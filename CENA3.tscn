@@ -1,0 +1,152 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://groundtileset.tres" type="TileSet" id=2]
+[ext_resource path="res://BG/Cartoon_Forest_BG_04.png" type="Texture" id=3]
+[ext_resource path="res://Monstro.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Monstro.gd" type="Script" id=5]
+[ext_resource path="res://Monstro2.gd" type="Script" id=6]
+[ext_resource path="res://Monstro3.gd" type="Script" id=7]
+[ext_resource path="res://Monstro25.gd" type="Script" id=8]
+[ext_resource path="res://Monstro4.gd" type="Script" id=9]
+[ext_resource path="res://Monstro10.gd" type="Script" id=10]
+[ext_resource path="res://Fim.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Win.gd" type="Script" id=12]
+[ext_resource path="res://Ganhou.gd" type="Script" id=13]
+[ext_resource path="res://door-576282_640.png" type="Texture" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 75.292, 99.9807 )
+
+[node name="Node" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 83.4189, 210.65 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 531.28, 271.424 )
+current = true
+limit_top = -350
+limit_bottom = 800
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.5, 0.5 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 70, 70 )
+format = 1
+tile_data = PoolIntArray( 139, 0, 0, 140, 0, 0, 141, 0, 0, 142, 0, 0, 143, 0, 0, 144, 0, 0, 145, 0, 0, 146, 0, 0, 147, 0, 0, 148, 0, 0, 149, 0, 0, 150, 0, 0, 151, 0, 0, 152, 0, 0, 153, 0, 0, 131071, 20, 0, 65675, 0, 0, 65676, 0, 0, 65677, 0, 0, 65678, 0, 0, 65679, 0, 0, 65680, 0, 0, 65681, 0, 0, 65682, 0, 0, 65683, 0, 0, 65684, 0, 0, 65685, 0, 0, 65686, 0, 0, 65687, 0, 0, 65688, 0, 0, 65689, 0, 0, 196607, 20, 0, 131219, 0, 0, 131220, 0, 0, 131221, 0, 0, 131222, 0, 0, 131223, 0, 0, 131224, 0, 0, 131225, 0, 0, 262143, 20, 0, 196755, 0, 0, 196756, 0, 0, 196757, 0, 0, 196758, 0, 0, 196759, 0, 0, 196760, 0, 0, 196761, 0, 0, 327679, 20, 0, 262291, 0, 0, 262292, 0, 0, 262293, 0, 0, 262294, 0, 0, 262295, 0, 0, 262296, 0, 0, 262297, 0, 0, 393215, 20, 0, 327740, 11, 0, 327741, 11, 0, 327742, 11, 0, 327743, 11, 0, 327744, 11, 0, 327745, 11, 0, 327746, 11, 0, 327827, 0, 0, 327828, 0, 0, 327829, 0, 0, 327830, 0, 0, 327831, 0, 0, 327832, 0, 0, 327833, 0, 0, 458751, 20, 0, 393363, 0, 0, 393364, 0, 0, 393365, 0, 0, 393366, 0, 0, 393367, 0, 0, 393368, 0, 0, 393369, 0, 0, 524287, 20, 0, 458752, 11, 0, 458753, 3, 0, 458754, 11, 0, 458755, 11, 0, 458756, 11, 0, 458757, 11, 0, 458758, 11, 0, 458759, 11, 0, 458760, 11, 0, 458764, 11, 0, 458765, 11, 0, 458766, 11, 0, 458767, 11, 0, 458768, 11, 0, 458769, 11, 0, 458770, 11, 0, 458771, 11, 0, 458772, 11, 0, 458773, 11, 0, 458774, 11, 0, 458899, 0, 0, 458900, 0, 0, 458901, 0, 0, 458902, 0, 0, 458903, 0, 0, 458904, 0, 0, 458905, 0, 0, 589823, 20, 0, 524288, 19, 0, 524289, 19, 0, 524290, 19, 0, 524291, 19, 0, 524292, 19, 0, 524293, 19, 0, 524294, 19, 0, 524295, 2, 0, 524296, 19, 0, 524300, 19, 0, 524301, 19, 0, 524302, 19, 0, 524303, 19, 0, 524304, 19, 0, 524305, 19, 0, 524306, 19, 0, 524307, 19, 0, 524308, 19, 0, 524309, 19, 0, 524310, 19, 0, 524312, 20, 0, 524340, 11, 0, 524341, 11, 0, 524342, 11, 0, 524343, 11, 0, 524344, 11, 0, 524345, 11, 0, 524346, 11, 0, 524364, 21, 0, 524435, 0, 0, 524436, 0, 0, 524437, 0, 0, 524438, 0, 0, 524439, 0, 0, 524440, 0, 0, 524441, 0, 0, 655359, 20, 0, 589824, 19, 0, 589825, 19, 0, 589826, 19, 0, 589827, 2, 0, 589828, 19, 0, 589829, 19, 0, 589830, 19, 0, 589831, 19, 0, 589832, 19, 0, 589836, 19, 0, 589837, 19, 0, 589838, 19, 0, 589839, 2, 0, 589840, 19, 0, 589841, 19, 0, 589842, 19, 0, 589843, 19, 0, 589844, 19, 0, 589845, 19, 0, 589846, 19, 0, 589964, 0, 0, 589965, 0, 0, 589966, 0, 0, 589967, 0, 0, 589968, 0, 0, 589969, 0, 0, 589970, 0, 0, 589971, 0, 0, 589972, 0, 0, 589973, 0, 0, 589974, 0, 0, 589975, 0, 0, 589976, 0, 0, 589977, 0, 0, 720895, 20, 0, 655360, 19, 0, 655361, 19, 0, 655362, 19, 0, 655363, 19, 0, 655364, 19, 0, 655365, 2, 0, 655366, 19, 0, 655367, 19, 0, 655368, 19, 0, 655372, 19, 0, 655373, 19, 0, 655374, 19, 0, 655375, 19, 0, 655376, 19, 0, 655377, 19, 0, 655378, 2, 0, 655379, 19, 0, 655380, 19, 0, 655381, 19, 0, 655382, 19, 0, 655387, 11, 0, 655388, 11, 0, 655389, 11, 0, 655390, 11, 0, 655391, 11, 0, 655392, 11, 0, 655431, 21, 0, 655499, 0, 0, 655500, 0, 0, 786431, 20, 0, 720896, 19, 0, 720897, 19, 0, 720898, 19, 0, 720899, 19, 0, 720900, 19, 0, 720901, 19, 0, 720902, 19, 0, 720903, 19, 0, 720904, 19, 0, 720908, 19, 0, 720909, 19, 0, 720910, 19, 0, 720911, 19, 0, 720912, 19, 0, 720913, 19, 0, 720914, 19, 0, 720915, 19, 0, 720916, 19, 0, 720917, 19, 0, 720918, 19, 0, 720923, 20, 0, 720924, 20, 0, 720925, 20, 0, 720926, 20, 0, 720927, 20, 0, 720928, 20, 0, 721034, 0, 0, 721035, 0, 0, 851967, 20, 0, 786432, 20, 0, 786433, 20, 0, 786434, 20, 0, 786435, 20, 0, 786436, 20, 0, 786437, 20, 0, 786438, 20, 0, 786439, 20, 0, 786440, 20, 0, 786444, 20, 0, 786445, 20, 0, 786446, 20, 0, 786447, 20, 0, 786448, 20, 0, 786449, 20, 0, 786450, 20, 0, 786451, 20, 0, 786452, 20, 0, 786453, 20, 0, 786454, 20, 0, 786464, 20, 0, 786479, 11, 0, 786480, 11, 0, 786481, 11, 0, 786482, 11, 0, 786483, 11, 0, 786484, 11, 0, 786485, 11, 0, 786569, 0, 0, 786570, 0, 0, 917503, 20, 0, 851968, 21, 0, 852000, 20, 0, 852104, 0, 0, 852105, 0, 0, 983039, 20, 0, 917504, 21, 0, 917536, 20, 0, 917587, 21, 0, 917639, 0, 0, 917640, 0, 0, 1048575, 20, 0, 983040, 21, 0, 983072, 20, 0, 983174, 0, 0, 983175, 0, 0, 1114111, 20, 0, 1048576, 21, 0, 1048608, 20, 0, 1048629, 11, 0, 1048630, 11, 0, 1048631, 11, 0, 1048632, 11, 0, 1048633, 11, 0, 1048634, 11, 0, 1048635, 10, 0, 1048665, 11, 0, 1048666, 11, 0, 1048667, 11, 0, 1048668, 11, 0, 1048669, 11, 0, 1048670, 11, 0, 1048671, 11, 0, 1048672, 11, 0, 1048673, 11, 0, 1048674, 11, 0, 1048675, 11, 0, 1048676, 11, 0, 1048677, 11, 0, 1048678, 11, 0, 1048679, 11, 0, 1048680, 11, 0, 1048681, 11, 0, 1048682, 11, 0, 1048683, 11, 0, 1048684, 11, 0, 1048685, 11, 0, 1048686, 11, 0, 1048687, 11, 0, 1048688, 11, 0, 1048689, 11, 0, 1048690, 11, 0, 1048691, 11, 0, 1048692, 11, 0, 1048693, 11, 0, 1048694, 11, 0, 1048695, 11, 0, 1048696, 11, 0, 1048697, 11, 0, 1048698, 11, 0, 1048699, 11, 0, 1048700, 11, 0, 1048701, 11, 0, 1048702, 11, 0, 1048703, 11, 0, 1048704, 11, 0, 1048709, 0, 0, 1048710, 0, 0, 1179647, 20, 0, 1114112, 21, 0, 1114113, 21, 0, 1114114, 21, 0, 1114115, 21, 0, 1114116, 21, 0, 1114121, 21, 0, 1114122, 21, 0, 1114123, 21, 0, 1114144, 20, 0, 1245183, 20, 0, 1179648, 20, 0, 1179649, 20, 0, 1179650, 20, 0, 1179651, 20, 0, 1179652, 20, 0, 1179657, 20, 0, 1179658, 20, 0, 1179659, 20, 0, 1179680, 20, 0, 1245216, 20, 0, 1245217, 20, 0, 1245218, 20, 0, 1245219, 11, 0, 1245220, 11, 0, 1245221, 11, 0, 1245222, 11, 0, 1245223, 11, 0, 1245224, 11, 0, 1245225, 11, 0, 1245226, 11, 0, 1245227, 11, 0, 1245228, 11, 0, 1245229, 11, 0, 1245230, 11, 0, 1245231, 11, 0, 1245232, 11, 0, 1245233, 11, 0, 1245234, 11, 0, 1245235, 11, 0, 1245236, 11, 0, 1245237, 11, 0, 1245238, 11, 0, 1245239, 11, 0, 1245240, 11, 0, 1245241, 11, 0, 1245242, 11, 0 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 0.7 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 927.345, 306.891 )
+texture = ExtResource( 3 )
+
+[node name="Monstros" type="Node" parent="."]
+
+[node name="Monstro" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 472.513, 210.832 )
+script = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro"]
+wait_time = 0.33
+one_shot = true
+
+[node name="Monstro2" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 969.415, 314.665 )
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro2"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Monstro3" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 1210.01, 627.416 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro3"]
+wait_time = 0.2
+
+[node name="Monstro4" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 1881.52, 526.127 )
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro4"]
+wait_time = 0.2
+
+[node name="Monstro5" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 1671.1, 384.88 )
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro5"]
+wait_time = 0.2
+
+[node name="Monstro6" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 1847.99, 246.797 )
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro6"]
+wait_time = 0.2
+
+[node name="Monstro7" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 2132.28, 141.205 )
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro7"]
+wait_time = 0.2
+
+[node name="Monstro8" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 3175.35, 524.193 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro8"]
+wait_time = 0.2
+
+[node name="Monstro9" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 3412.24, 526.326 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro9"]
+wait_time = 0.2
+
+[node name="Monstro10" parent="Monstros" instance=ExtResource( 4 )]
+position = Vector2( 3652.81, 522.81 )
+script = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro10"]
+wait_time = 0.2
+
+[node name="Fim" parent="." instance=ExtResource( 11 )]
+position = Vector2( 20.0146, 20.0146 )
+
+[node name="Win" type="Area2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="Ganhou" type="CollisionShape2D" parent="Win"]
+position = Vector2( 5042.28, 203.361 )
+shape = SubResource( 1 )
+script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="Win"]
+position = Vector2( 5037.64, 195.662 )
+scale = Vector2( 0.3, 0.4 )
+z_index = -5
+texture = ExtResource( 14 )
+[connection signal="timeout" from="Monstros/Monstro/Timer" to="Monstros/Monstro" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro2/Timer" to="Monstros/Monstro2" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro3/Timer" to="Monstros/Monstro3" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro4/Timer" to="Monstros/Monstro4" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro5/Timer" to="Monstros/Monstro5" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro6/Timer" to="Monstros/Monstro6" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro7/Timer" to="Monstros/Monstro7" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro8/Timer" to="Monstros/Monstro8" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro9/Timer" to="Monstros/Monstro9" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro10/Timer" to="Monstros/Monstro10" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Win" to="Win" method="_on_Win_body_entered"]

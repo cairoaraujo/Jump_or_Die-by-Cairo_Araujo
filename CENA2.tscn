@@ -1,0 +1,228 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://BG/Cartoon_Forest_BG_01.png" type="Texture" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://groundtileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Area2D.gd" type="Script" id=4]
+[ext_resource path="res://door-576282_640.png" type="Texture" id=5]
+[ext_resource path="res://Monstro.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Monstro.gd" type="Script" id=7]
+[ext_resource path="res://Monstro22.gd" type="Script" id=8]
+[ext_resource path="res://Monstro25.gd" type="Script" id=9]
+[ext_resource path="res://Fim.tscn" type="PackedScene" id=10]
+
+[sub_resource type="VisualScriptFunction" id=1]
+resource_name = "_on_Coin_coin_collected"
+
+[sub_resource type="VisualScriptFunction" id=2]
+
+[sub_resource type="VisualScriptVariableGet" id=3]
+var_name = "score"
+
+[sub_resource type="VisualScriptOperator" id=4]
+_default_input_values = [ 0, 1 ]
+type = 2
+
+[sub_resource type="VisualScriptVariableSet" id=5]
+var_name = "score"
+
+[sub_resource type="VisualScriptBuiltinFunc" id=6]
+_default_input_values = [ null ]
+function = 55
+
+[sub_resource type="VisualScriptVariableGet" id=7]
+var_name = "score"
+
+[sub_resource type="VisualScriptOperator" id=8]
+_default_input_values = [ "Pontos: ", "Null" ]
+operator = 13
+
+[sub_resource type="VisualScriptFunctionCall" id=9]
+call_mode = 1
+base_type = "RichTextLabel"
+node_path = NodePath("CanvasLayer/RichTextLabel")
+argument_cache = {
+"args": [  ],
+"default_args": [  ],
+"flags": 1,
+"id": 0,
+"name": "",
+"return": {
+"class_name": "",
+"hint": 0,
+"hint_string": "",
+"name": "",
+"type": 0,
+"usage": 7
+}
+}
+function = "clear"
+
+[sub_resource type="VisualScriptFunctionCall" id=10]
+_default_input_values = [ "Null" ]
+call_mode = 1
+base_type = "RichTextLabel"
+node_path = NodePath("CanvasLayer/RichTextLabel")
+argument_cache = {
+"args": [ {
+"class_name": "",
+"hint": 0,
+"hint_string": "",
+"name": "text",
+"type": 4,
+"usage": 7
+} ],
+"default_args": [  ],
+"flags": 1,
+"id": 0,
+"name": "",
+"return": {
+"class_name": "",
+"hint": 0,
+"hint_string": "",
+"name": "",
+"type": 0,
+"usage": 7
+}
+}
+function = "add_text"
+
+[sub_resource type="VisualScript" id=11]
+data = {
+"base_type": "Node2D",
+"functions": [ {
+"data_connections": [  ],
+"function_id": 9,
+"name": "_on_Coin_coin_collected",
+"nodes": [ 9, Vector2( 0, 0 ), SubResource( 1 ) ],
+"scroll": Vector2( -50, -100 ),
+"sequence_connections": [  ]
+}, {
+"data_connections": [ 1, 0, 2, 0, 2, 0, 3, 0, 6, 0, 4, 0, 6, 0, 8, 0, 5, 0, 6, 1 ],
+"function_id": 0,
+"name": "_on_moeda2_coin_collected",
+"nodes": [ 0, Vector2( -140, -80 ), SubResource( 2 ), 1, Vector2( -100, 40 ), SubResource( 3 ), 2, Vector2( 80, 40 ), SubResource( 4 ), 3, Vector2( 200, -60 ), SubResource( 5 ), 4, Vector2( 400, 20 ), SubResource( 6 ), 5, Vector2( 220, 160 ), SubResource( 7 ), 6, Vector2( 420, 140 ), SubResource( 8 ), 7, Vector2( 540, 20 ), SubResource( 9 ), 8, Vector2( 960, 20 ), SubResource( 10 ) ],
+"scroll": Vector2( -174.887, -140.75 ),
+"sequence_connections": [ 0, 0, 3, 3, 0, 4, 4, 0, 7, 7, 0, 8 ]
+} ],
+"signals": [  ],
+"variables": [ {
+"default_value": 0,
+"export": false,
+"hint": 0,
+"hint_string": "",
+"name": "score",
+"type": 2,
+"usage": 7
+} ]
+}
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 31.9988
+
+[node name="CENA2" type="Node"]
+script = SubResource( 11 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -10.2744, -143.841 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 7.94434, -241.194 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 111.045, 292.998 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 659.486, -38.2593 )
+scale = Vector2( 3.33333, 3.33333 )
+current = true
+limit_top = -300
+limit_bottom = 600
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.5, 0.5 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 70, 70 )
+format = 1
+tile_data = PoolIntArray( -196543, 21, 0, -196542, 21, 0, -196541, 21, 0, -196540, 21, 0, -196539, 21, 0, -65477, 21, 0, -65471, 23, 0, 58, 21, 0, 59, 21, 0, 65581, 23, 0, 65593, 21, 0, 65594, 21, 0, 65595, 21, 0, 65606, 21, 0, 65607, 21, 0, 65608, 21, 0, 65609, 21, 0, 65610, 21, 0, 65632, 21, 0, 131128, 21, 0, 131129, 21, 0, 131130, 21, 0, 131131, 21, 0, 131179, 22, 0, 196663, 21, 0, 196664, 21, 0, 196665, 21, 0, 196666, 21, 0, 196667, 21, 0, 196709, 21, 0, 196710, 21, 0, 196711, 21, 0, 196712, 21, 0, 196713, 21, 0, 196714, 21, 0, 196715, 21, 0, 262198, 21, 0, 262199, 21, 0, 262200, 21, 0, 262201, 21, 0, 262202, 21, 0, 262203, 21, 0, 262222, 21, 0, 262223, 21, 0, 262224, 21, 0, 262225, 21, 0, 262226, 21, 0, 262237, 21, 0, 327680, 20, 0, 327733, 21, 0, 327734, 21, 0, 327735, 21, 0, 327736, 21, 0, 327737, 21, 0, 327738, 21, 0, 327739, 21, 0, 393216, 20, 0, 393236, 21, 0, 393237, 21, 0, 393238, 21, 0, 393239, 21, 0, 393240, 21, 0, 393241, 21, 0, 393242, 21, 0, 393243, 21, 0, 393244, 21, 0, 393245, 21, 0, 393246, 21, 0, 393247, 21, 0, 393248, 21, 0, 393249, 21, 0, 393250, 21, 0, 393251, 21, 0, 393252, 21, 0, 393268, 21, 0, 393269, 21, 0, 393270, 21, 0, 393271, 21, 0, 393272, 21, 0, 393273, 21, 0, 393274, 21, 0, 393275, 21, 0, 458752, 20, 0, 458803, 21, 0, 458804, 21, 0, 458805, 21, 0, 458806, 21, 0, 458807, 21, 0, 458808, 21, 0, 458809, 21, 0, 458810, 21, 0, 458811, 21, 0, 458847, 21, 0, 524288, 20, 0, 524338, 21, 0, 524339, 21, 0, 524340, 21, 0, 524341, 21, 0, 524342, 21, 0, 524343, 21, 0, 524344, 21, 0, 524345, 21, 0, 524346, 21, 0, 524347, 21, 0, 524348, 21, 0, 589824, 20, 0, 589867, 20, 0, 589868, 21, 0, 589869, 21, 0, 589870, 21, 0, 589871, 21, 0, 589872, 21, 0, 589873, 21, 0, 589874, 21, 0, 589875, 21, 0, 589876, 21, 0, 589877, 21, 0, 589878, 21, 0, 589879, 21, 0, 589880, 21, 0, 589881, 21, 0, 589882, 21, 0, 589883, 21, 0, 589884, 21, 0, 589901, 20, 0, 589904, 21, 0, 589905, 21, 0, 589906, 21, 0, 589907, 21, 0, 589908, 21, 0, 655360, 20, 0, 655437, 20, 0, 655457, 21, 0, 720896, 20, 0, 720911, 21, 0, 720912, 21, 0, 720913, 21, 0, 720914, 21, 0, 720915, 21, 0, 720916, 21, 0, 720917, 21, 0, 720918, 21, 0, 720919, 21, 0, 720973, 20, 0, 786432, 20, 0, 786447, 20, 0, 786448, 20, 0, 786449, 20, 0, 786450, 20, 0, 786451, 20, 0, 786452, 20, 0, 786453, 20, 0, 786454, 20, 0, 786455, 20, 0, 786509, 20, 0, 786510, 20, 0, 786511, 20, 0, 786512, 20, 0, 786513, 20, 0, 786514, 20, 0, 786515, 20, 0, 786516, 20, 0, 786517, 20, 0, 786518, 20, 0, 786519, 20, 0, 851968, 20, 0, 851969, 20, 0, 852011, 20, 0, 852012, 20, 0, 852013, 20, 0, 852014, 20, 0, 852015, 20, 0, 852016, 20, 0, 852017, 20, 0, 852018, 20, 0, 852019, 20, 0, 852020, 20, 0, 852021, 20, 0, 852022, 20, 0, 852023, 20, 0, 852024, 20, 0, 852025, 20, 0, 852026, 20, 0, 852027, 20, 0, 852028, 20, 0, 852029, 20, 0, 852030, 20, 0, 852031, 20, 0, 852032, 20, 0, 852033, 20, 0, 852062, 21, 0, 917504, 20, 0, 917505, 20, 0, 917506, 21, 0, 917507, 21, 0, 917508, 21, 0, 917509, 21, 0, 917510, 21, 0, 917511, 21, 0, 917512, 21, 0, 917513, 21, 0, 917514, 21, 0, 917515, 21, 0, 917547, 21, 0, 917548, 21, 0, 917549, 21, 0, 917550, 21, 0, 917551, 21, 0, 917552, 21, 0, 917553, 21, 0, 917554, 21, 0, 917555, 21, 0, 917556, 21, 0, 917557, 21, 0, 917558, 21, 0, 917559, 21, 0, 917560, 21, 0, 917561, 21, 0, 917562, 21, 0, 917563, 21, 0, 917564, 21, 0, 917565, 21, 0, 917566, 21, 0, 917567, 21, 0, 917568, 21, 0, 917569, 20, 0, 917594, 21, 0, 983040, 20, 0, 983041, 20, 0, 983042, 20, 0, 983043, 20, 0, 983044, 20, 0, 983045, 20, 0, 983046, 20, 0, 983047, 20, 0, 983048, 20, 0, 983049, 20, 0, 983050, 20, 0, 983051, 20, 0, 983083, 21, 0, 983084, 21, 0, 983085, 21, 0, 983086, 21, 0, 983087, 21, 0, 983088, 21, 0, 983089, 21, 0, 983090, 21, 0, 983091, 21, 0, 983092, 21, 0, 983093, 21, 0, 983094, 21, 0, 983095, 21, 0, 983096, 21, 0, 983097, 21, 0, 983098, 21, 0, 983099, 21, 0, 983100, 21, 0, 983101, 21, 0, 983102, 21, 0, 983103, 21, 0, 983104, 21, 0, 983105, 20, 0, 1048576, 20, 0, 1048577, 20, 0, 1048578, 20, 0, 1048579, 20, 0, 1048580, 20, 0, 1048581, 20, 0, 1048582, 20, 0, 1048583, 20, 0, 1048584, 20, 0, 1048585, 20, 0, 1048586, 20, 0, 1048587, 20, 0, 1048619, 21, 0, 1048620, 21, 0, 1048621, 21, 0, 1048622, 21, 0, 1048623, 21, 0, 1048624, 21, 0, 1048625, 21, 0, 1048626, 21, 0, 1048627, 21, 0, 1048628, 21, 0, 1048629, 21, 0, 1048630, 21, 0, 1048631, 21, 0, 1048632, 21, 0, 1048633, 21, 0, 1048634, 21, 0, 1048635, 21, 0, 1048636, 21, 0, 1048637, 21, 0, 1048638, 21, 0, 1048639, 21, 0, 1048640, 21, 0, 1048641, 20, 0, 1114112, 20, 0, 1114113, 20, 0, 1114114, 20, 0, 1114115, 20, 0, 1114116, 20, 0, 1114117, 20, 0, 1114118, 20, 0, 1114119, 20, 0, 1114120, 20, 0, 1114121, 20, 0, 1114122, 20, 0, 1114123, 20, 0, 1114177, 20, 0, 1179648, 20, 0, 1179649, 20, 0, 1179650, 20, 0, 1179651, 20, 0, 1179652, 20, 0, 1179653, 20, 0, 1179654, 20, 0, 1179655, 20, 0, 1179656, 20, 0, 1179657, 20, 0, 1179658, 20, 0, 1179659, 20, 0, 1245184, 20, 0, 1245185, 20, 0, 1245186, 20, 0, 1245187, 20, 0, 1245188, 20, 0, 1245189, 20, 0, 1245190, 20, 0, 1245191, 20, 0, 1245192, 20, 0, 1245193, 20, 0, 1245194, 20, 0, 1245195, 20, 0 )
+
+[node name="passagem2" type="Area2D" parent="."]
+position = Vector2( 3694.04, 62.6346 )
+z_index = -1
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="passagem2"]
+scale = Vector2( 0.12, 0.15 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="passagem2"]
+position = Vector2( 4.14642, -0.995186 )
+shape = SubResource( 12 )
+
+[node name="Monstros" type="Node" parent="."]
+
+[node name="Monstro" parent="Monstros" instance=ExtResource( 6 )]
+position = Vector2( 558.431, 351.014 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro"]
+wait_time = 0.2
+
+[node name="Monstro2" parent="Monstros" instance=ExtResource( 6 )]
+position = Vector2( 745.341, 176.163 )
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro2"]
+wait_time = 0.2
+
+[node name="Monstro3" parent="Monstros" instance=ExtResource( 6 )]
+position = Vector2( 1543.42, 278.409 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro3"]
+wait_time = 0.2
+
+[node name="Monstro4" parent="Monstros" instance=ExtResource( 6 )]
+position = Vector2( 2299.92, -137.425 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro4"]
+wait_time = 0.2
+
+[node name="Monstro5" parent="Monstros" instance=ExtResource( 6 )]
+position = Vector2( 2468.27, -0.0996552 )
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro5"]
+wait_time = 0.2
+
+[node name="Monstro6" parent="Monstros" instance=ExtResource( 6 )]
+position = Vector2( 2744.62, 105.637 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro6"]
+wait_time = 0.2
+
+[node name="Monstro7" parent="Monstros" instance=ExtResource( 6 )]
+position = Vector2( 2821.56, 277.968 )
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="Monstros/Monstro7"]
+wait_time = 0.2
+
+[node name="Fim" parent="." instance=ExtResource( 10 )]
+[connection signal="body_entered" from="passagem2" to="passagem2" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Monstros/Monstro/Timer" to="Monstros/Monstro" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro2/Timer" to="Monstros/Monstro2" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro3/Timer" to="Monstros/Monstro3" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro4/Timer" to="Monstros/Monstro4" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro5/Timer" to="Monstros/Monstro5" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro6/Timer" to="Monstros/Monstro6" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Monstros/Monstro7/Timer" to="Monstros/Monstro7" method="_on_Timer_timeout"]

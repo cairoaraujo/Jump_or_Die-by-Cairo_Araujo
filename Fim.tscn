@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CollisionShape2D.gd" type="Script" id=1]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( -53.9514, 4.37169 )
+b = Vector2( 236.234, 4.58192 )
+
+[node name="Fim" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -12.5217, 1229.5 )
+scale = Vector2( 20, 20 )
+shape = SubResource( 1 )
+script = ExtResource( 1 )
+[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_Fim_body_entered"]
